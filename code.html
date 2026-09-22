@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>E-Ticket: Surabaya-Madura</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#2f1500",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-primary-container": "#8cb6ff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#603100",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-fixed-dim": "#ffb77d",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdcc3",
+                        "inverse-primary": "#a9c7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#552000",
+                        "surface-bright": "#f8f9fb",
+                        "outline-variant": "#c2c6d2",
+                        "primary": "#003063",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#424751",
+                        "secondary-container": "#fd8b00",
+                        "surface-dim": "#d8dadc",
+                        "secondary": "#904d00",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-container": "#00468c",
+                        "surface": "#f8f9fb",
+                        "on-tertiary-container": "#ff9d69",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "tertiary-container": "#793100",
+                        "on-tertiary-fixed-variant": "#793100",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9fb",
+                        "outline": "#737782",
+                        "on-primary-fixed-variant": "#00468c",
+                        "surface-tint": "#2a5ea5",
+                        "inverse-on-surface": "#eff1f3",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#001b3d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .ticket-cutout {
+            position: relative;
+        }
+
+        .ticket-cutout::before,
+        .ticket-cutout::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #f2f4f6;
+            /* Matching surface-container-low */
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .ticket-cutout::before {
+            left: -10px;
+        }
+
+        .ticket-cutout::after {
+            right: -10px;
+        }
+
+        .dashed-line {
+            background-image: linear-gradient(to right, #c2c6d2 50%, rgba(255, 255, 255, 0) 0%);
+            background-position: bottom;
+            background-size: 8px 1px;
+            background-repeat: repeat-x;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface-container-low font-body text-on-surface min-h-screen">
+    <!-- TopAppBar -->
+    <header
+        class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 shadow-[0_8px_24px_-2px_rgba(25,28,30,0.06)]">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-blue-900" data-icon="ship">sailing</span>
+            <h1 class="text-xl font-black italic tracking-tighter text-blue-900 uppercase">Surabaya-Madura</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+        </div>
+    </header>
+    <main class="pt-24 pb-32 px-6 flex flex-col items-center max-w-lg mx-auto">
+        <!-- Intentional Asymmetry: Editorial Heading -->
+        <div class="w-full mb-8 ml-2">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-secondary mb-1 block">Your Boarding
+                Pass</span>
+            <h2 class="text-3xl font-extrabold text-primary tracking-tight">Ready for departure</h2>
+        </div>
+        <!-- Central Ticket Card (The Command Center) -->
+        <div
+            class="w-full bg-surface-container-lowest rounded-[2rem] shadow-[0_8px_24px_-2px_rgba(25,28,30,0.06)] overflow-hidden">
+            <!-- Ticket Header -->
+            <div class="p-8 bg-gradient-to-br from-primary to-primary-container text-white">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest opacity-70 font-bold">Vessel</p>
+                        <p class="text-lg font-bold">KMP Gili Iyang</p>
+                    </div>
+                    <div class="bg-secondary-container text-on-secondary-fixed rounded-full px-3 py-1">
+                        <span class="text-[10px] uppercase tracking-widest font-bold">Economy Class</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-center">
+                        <p class="text-3xl font-black tracking-tighter">SUR</p>
+                        <p class="text-[10px] uppercase tracking-widest opacity-70">Surabaya</p>
+                    </div>
+                    <div class="flex-1 px-4 flex flex-col items-center">
+                        <span class="material-symbols-outlined text-secondary-container"
+                            data-icon="directions_boat">directions_boat</span>
+                        <div class="w-full h-px bg-white/20 my-2 relative">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-secondary-container to-transparent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl font-black tracking-tighter">MAD</p>
+                        <p class="text-[10px] uppercase tracking-widest opacity-70">Madura</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Divider with Cutouts -->
+            <div class="ticket-cutout relative h-6 bg-surface-container-lowest">
+                <div class="dashed-line absolute top-1/2 left-4 right-4 h-px"></div>
+            </div>
+            <!-- Passenger Details & QR -->
+            <div class="p-8 pt-4">
+                <div class="grid grid-cols-2 gap-y-6 mb-8">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Passenger</p>
+                        <p class="text-sm font-bold text-primary">Aditya Rahman</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Gate</p>
+                        <p class="text-sm font-bold text-primary">Pier 4B</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Date</p>
+                        <p class="text-sm font-bold text-primary">24 Oct 2024</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Time</p>
+                        <p class="text-sm font-bold text-primary">09:30 AM</p>
+                    </div>
+                </div>
+                <!-- QR Code Section -->
+                <div
+                    class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-3xl border border-outline-variant/15">
+                    <div class="bg-white p-4 rounded-xl shadow-sm mb-4">
+                        <img id="ticketQrCodeImage" alt="Ticket QR Code" class="w-40 h-40"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnb4a7z2Vdi-7QSwEfwn7N8H3y7onEuRNn93ejxkf9hIcj7AwIhrrXXuhpseLVBIg93zp7i3vRTj2Pk28Ri6iO_5wBirSS4_02ylBeqaMZdZxw3CF1lS4TXniNtVyioLgZl6GpOEhdi7nhUidIYHXk6XxCKp2Qe0OHnOTh638kWoUki7O5MqxK311__0Jn1CF_OtfCIi3oHeNyhk1d4ttODxt3YpbkmBh84UUxx3Gq9sgIRLMVbPhUi9gFAkKH2OT1U8EfSAV90WhI" />
+                    </div>
+                    <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Ticket ID
+                    </p>
+                    <p class="text-sm font-mono font-bold tracking-widest text-primary">SM-8829-X04</p>
+                </div>
+            </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="w-full mt-8 flex gap-4">
+            <button id="downloadTicketBtn"
+                class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-[0_8px_24px_-2px_rgba(0,48,99,0.2)] active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                <span class="text-sm uppercase tracking-wider">Download Ticket</span>
+            </button>
+            <button
+                class="w-16 bg-white text-primary border border-outline-variant/30 py-4 rounded-xl flex items-center justify-center shadow-sm active:scale-95 transition-transform">
+                <span class="material-symbols-outlined" data-icon="share">share</span>
+            </button>
+        </div>
+        <!-- Additional Info -->
+        <div class="mt-10 p-6 bg-blue-50/50 rounded-2xl border border-primary/5 flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+            <div>
+                <p class="text-xs font-bold text-primary uppercase tracking-tight mb-1">Boarding Policy</p>
+                <p class="text-xs text-on-surface-variant leading-relaxed">Please arrive at the terminal at least 30
+                    minutes before departure. Have your physical ID ready for verification.</p>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-3 pb-8 px-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl shadow-[0_-8px_24px_-2px_rgba(25,28,30,0.08)]">
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-800 active:scale-90 transition-transform duration-150"
+            href="../home_ferry_booking/code.html">
+            <span class="material-symbols-outlined" data-icon="explore">explore</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Explore</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-800 active:scale-90 transition-transform duration-150"
+            href="../booking_details/code.html">
+            <span class="material-symbols-outlined" data-icon="sailing">sailing</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">My Trips</span>
+        </a>
+        <a class="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 rounded-2xl px-5 py-2 active:scale-90 transition-transform duration-150"
+            href="#">
+            <span class="material-symbols-outlined" data-icon="confirmation_number"
+                style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Tickets</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-800 active:scale-90 transition-transform duration-150"
+            href="../account_dashboard/code.html">
+            <span class="material-symbols-outlined" data-icon="person">person</span>
+            <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold mt-1">Account</span>
+        </a>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script>
+        async function downloadQrCodePdf() {
+            const imgEl = document.getElementById('ticketQrCodeImage');
+            if (!imgEl) return;
+            try {
+                const response = await fetch(imgEl.src, { mode: 'cors' });
+                const blob = await response.blob();
+                const bitmap = await createImageBitmap(blob);
+                const canvas = document.createElement('canvas');
+                canvas.width = bitmap.width;
+                canvas.height = bitmap.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(bitmap, 0, 0);
+                const imageData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({ unit: 'mm', format: 'a4' });
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const margin = 20;
+                const availableWidth = pageWidth - margin * 2;
+                const availableHeight = pageHeight - margin * 2;
+                const aspectRatio = bitmap.width / bitmap.height;
+                let renderWidth = availableWidth;
+                let renderHeight = renderWidth / aspectRatio;
+                if (renderHeight > availableHeight) {
+                    renderHeight = availableHeight;
+                    renderWidth = renderHeight * aspectRatio;
+                }
+                const x = (pageWidth - renderWidth) / 2;
+                const y = (pageHeight - renderHeight) / 2;
+                pdf.addImage(imageData, 'PNG', x, y, renderWidth, renderHeight);
+                pdf.save('ticket-qr-code.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Unable to download ticket. Please try again.');
+            }
+        }
+
+        document.getElementById('downloadTicketBtn')?.addEventListener('click', downloadQrCodePdf);
+    </script>
+</body>
+
+</html>
